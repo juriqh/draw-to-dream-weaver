@@ -17,79 +17,91 @@ const Gallery = () => {
   const navigate = useNavigate();
   const [selectedStory, setSelectedStory] = useState<number | null>(null);
 
-  // Sample gallery data - in real app this would come from backend
+  // Sample gallery data with Saudi-themed stories
   const stories = [
     {
       id: 1,
-      title: "The Dragon's Castle",
+      title: "قصر الأمير الصغير",
       thumbnail: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=300&fit=crop",
-      date: "2 days ago",
+      date: "منذ يومين",
       likes: 12,
       plays: 25
     },
     {
       id: 2,
-      title: "Underwater Adventure",
+      title: "مغامرة في الواحة",
       thumbnail: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=300&fit=crop",
-      date: "1 week ago",
+      date: "منذ أسبوع",
       likes: 8,
       plays: 18
     },
     {
       id: 3,
-      title: "Space Explorer",
+      title: "رحلة الجمل الذكي",
       thumbnail: "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=300&h=300&fit=crop",
-      date: "2 weeks ago",
+      date: "منذ أسبوعين",
       likes: 15,
       plays: 32
     },
     {
       id: 4,
-      title: "Magic Forest",
+      title: "سحر الصحراء",
       thumbnail: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&h=300&fit=crop",
-      date: "3 weeks ago",
+      date: "منذ ٣ أسابيع",
       likes: 20,
       plays: 45
     },
     {
       id: 5,
-      title: "Robot Friends",
+      title: "أصدقاء النخلة",
       thumbnail: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=300&h=300&fit=crop",
-      date: "1 month ago",
+      date: "منذ شهر",
       likes: 6,
       plays: 12
     },
     {
       id: 6,
-      title: "Princess Palace",
+      title: "حكاية المسجد الجميل",
       thumbnail: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=300&h=300&fit=crop",
-      date: "1 month ago",
+      date: "منذ شهر",
       likes: 22,
       plays: 38
     }
   ];
 
   const achievements = [
-    { icon: <Star className="h-6 w-6" />, title: "First Story", description: "Created your first magical story!" },
-    { icon: <Heart className="h-6 w-6" />, title: "Story Lover", description: "Created 5 amazing stories!" },
-    { icon: <Trophy className="h-6 w-6" />, title: "Creative Artist", description: "Your stories got 50+ likes!" }
+    { 
+      icon: <Star className="h-6 w-6" />, 
+      title: "أول قصة", 
+      description: "أنشأت قصتك السحرية الأولى!" 
+    },
+    { 
+      icon: <Heart className="h-6 w-6" />, 
+      title: "عاشق القصص", 
+      description: "أنشأت ٥ قصص مذهلة!" 
+    },
+    { 
+      icon: <Trophy className="h-6 w-6" />, 
+      title: "فنان مبدع", 
+      description: "حصلت قصصك على أكثر من ٥٠ إعجاب!" 
+    }
   ];
 
   const handleStoryClick = (storyId: number) => {
     setSelectedStory(storyId);
-    toast.success("Playing story! 🎵");
+    toast.success("تشغيل القصة! 🎵");
   };
 
   const handleShare = (storyId: number) => {
-    toast.success("Story shared with friends! 📤");
+    toast.success("تم مشاركة القصة مع الأصدقاء! 📤");
   };
 
   const handleDownload = (storyId: number) => {
-    toast.success("Story downloaded! 📥");
+    toast.success("تم تحميل القصة! 📥");
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-arabic">
       {/* Header */}
       <div className="bg-muted/30 p-4">
         <div className="container mx-auto max-w-6xl flex items-center justify-between">
@@ -99,11 +111,11 @@ const Gallery = () => {
               size="icon"
               onClick={() => navigate("/")}
             >
-              <ArrowLeft className="h-5 w-5" />
+              <ArrowLeft className="h-5 w-5 scale-x-[-1]" />
             </Button>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">My Story Gallery</h1>
-              <p className="text-muted-foreground">All your magical adventures in one place!</p>
+              <h1 className="text-2xl font-bold text-foreground font-amiri">معرض قصصي</h1>
+              <p className="text-muted-foreground">جميع مغامراتك السحرية في مكان واحد!</p>
             </div>
           </div>
           
@@ -111,8 +123,8 @@ const Gallery = () => {
             variant="playful"
             onClick={() => navigate("/upload")}
           >
-            <Plus className="mr-2 h-4 w-4" />
-            New Story
+            <Plus className="ml-2 h-4 w-4" />
+            قصة جديدة
           </Button>
         </div>
       </div>
@@ -120,12 +132,12 @@ const Gallery = () => {
       <div className="container mx-auto max-w-6xl p-4">
         {/* Achievements Section */}
         <div className="mb-8">
-          <h2 className="mb-4 text-2xl font-bold text-foreground">Your Achievements 🏆</h2>
+          <h2 className="mb-4 text-2xl font-bold text-foreground font-amiri">إنجازاتك 🏆</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {achievements.map((achievement, index) => (
               <div
                 key={index}
-                className="group animate-fade-in-up rounded-2xl bg-gradient-success p-4 text-white shadow-soft hover:animate-scale-bounce"
+                className="group animate-fade-in-up rounded-2xl bg-gradient-success p-4 text-white shadow-warm hover:animate-scale-bounce"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="mb-2 flex items-center gap-3">
@@ -134,7 +146,7 @@ const Gallery = () => {
                   </div>
                   <h3 className="font-semibold">{achievement.title}</h3>
                 </div>
-                <p className="text-sm opacity-90">{achievement.description}</p>
+                <p className="text-sm opacity-90 text-right">{achievement.description}</p>
               </div>
             ))}
           </div>
@@ -143,29 +155,29 @@ const Gallery = () => {
         {/* Stories Grid */}
         <div className="mb-8">
           <div className="mb-6 flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-foreground">Your Stories ({stories.length})</h2>
+            <h2 className="text-2xl font-bold text-foreground font-amiri">قصصك ({stories.length})</h2>
             <div className="text-sm text-muted-foreground">
-              Total plays: {stories.reduce((sum, story) => sum + story.plays, 0)}
+              إجمالي المشاهدات: {stories.reduce((sum, story) => sum + story.plays, 0)}
             </div>
           </div>
 
           {stories.length === 0 ? (
             <div className="rounded-3xl bg-muted/30 p-12 text-center">
               <div className="mb-4 flex justify-center">
-                <div className="rounded-3xl bg-gradient-primary p-6 shadow-primary">
+                <div className="rounded-3xl bg-gradient-primary p-6 shadow-warm">
                   <Plus className="h-16 w-16 text-white" />
                 </div>
               </div>
-              <h3 className="mb-4 text-2xl font-bold text-foreground">No Stories Yet</h3>
+              <h3 className="mb-4 text-2xl font-bold text-foreground font-amiri">لا توجد قصص بعد</h3>
               <p className="mb-6 text-muted-foreground">
-                Upload your first drawing and create an amazing story!
+                ارفع رسمتك الأولى وأنشئ قصة مذهلة!
               </p>
               <Button
                 variant="magic"
                 size="lg"
                 onClick={() => navigate("/upload")}
               >
-                Create Your First Story
+                أنشئ قصتك الأولى
               </Button>
             </div>
           ) : (
@@ -173,7 +185,7 @@ const Gallery = () => {
               {stories.map((story, index) => (
                 <div
                   key={story.id}
-                  className={`group animate-fade-in-up cursor-pointer rounded-3xl bg-card p-4 shadow-soft hover:shadow-primary transition-all duration-300 ${
+                  className={`group animate-fade-in-up cursor-pointer rounded-3xl bg-card p-4 shadow-warm hover:shadow-primary transition-all duration-300 ${
                     selectedStory === story.id ? 'ring-2 ring-primary' : ''
                   }`}
                   style={{ animationDelay: `${index * 0.1}s` }}
@@ -194,11 +206,11 @@ const Gallery = () => {
                     </div>
                   </div>
 
-                  <h3 className="mb-2 text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                  <h3 className="mb-2 text-lg font-semibold text-foreground group-hover:text-primary transition-colors text-right">
                     {story.title}
                   </h3>
                   
-                  <p className="mb-3 text-sm text-muted-foreground">{story.date}</p>
+                  <p className="mb-3 text-sm text-muted-foreground text-right">{story.date}</p>
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -242,23 +254,23 @@ const Gallery = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="rounded-3xl bg-gradient-primary p-8 text-center text-white shadow-glow">
-          <h3 className="mb-4 text-3xl font-bold">Keep Creating! ✨</h3>
-          <p className="mb-6 text-lg opacity-90">
-            You've created {stories.length} amazing stories and inspired others with your creativity!
+        <div className="rounded-3xl bg-gradient-saudi p-8 text-center text-white shadow-glow">
+          <h3 className="mb-4 text-3xl font-bold font-amiri">استمر في الإبداع! ✨</h3>
+          <p className="mb-6 text-lg opacity-90 leading-relaxed">
+            لقد أنشأت {stories.length} قصة مذهلة وألهمت الآخرين بإبداعك!
           </p>
           <div className="flex flex-wrap justify-center gap-8 mb-6">
             <div className="text-center">
               <div className="text-3xl font-bold">{stories.length}</div>
-              <div className="text-sm opacity-75">Stories Created</div>
+              <div className="text-sm opacity-75">قصص مُنشأة</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold">{stories.reduce((sum, story) => sum + story.likes, 0)}</div>
-              <div className="text-sm opacity-75">Total Likes</div>
+              <div className="text-sm opacity-75">إجمالي الإعجابات</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold">{stories.reduce((sum, story) => sum + story.plays, 0)}</div>
-              <div className="text-sm opacity-75">Times Played</div>
+              <div className="text-sm opacity-75">مرات التشغيل</div>
             </div>
           </div>
           <Button
@@ -267,7 +279,7 @@ const Gallery = () => {
             onClick={() => navigate("/upload")}
             className="bg-white/10 border-white/30 text-white hover:bg-white/20"
           >
-            Create Another Masterpiece
+            أنشئ تحفة أخرى
           </Button>
         </div>
       </div>

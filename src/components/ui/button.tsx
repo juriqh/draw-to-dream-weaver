@@ -20,7 +20,7 @@ const buttonVariants = cva(
         playful: "bg-gradient-primary text-primary-foreground hover:scale-105 hover:shadow-glow rounded-2xl transform transition-all duration-300",
         fun: "bg-gradient-accent text-accent-foreground hover:animate-wiggle hover:shadow-primary rounded-2xl",
         success: "bg-gradient-success text-success-foreground hover:animate-bounce-gentle shadow-soft rounded-2xl",
-        magic: "bg-gradient-rainbow text-white hover:animate-pulse-glow hover:scale-105 rounded-2xl transform transition-all duration-300",
+        magic: "bg-gradient-saudi text-white hover:animate-pulse-glow hover:scale-105 rounded-2xl transform transition-all duration-300",
         soft: "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-2xl shadow-soft",
       },
       size: {

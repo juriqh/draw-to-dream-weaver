@@ -19,9 +19,9 @@ const Upload = () => {
         setPreview(e.target?.result as string);
       };
       reader.readAsDataURL(file);
-      toast.success("Drawing uploaded! Ready to create a story 🎨");
+      toast.success("تم رفع الرسمة! جاهز لإنشاء القصة 🎨");
     } else {
-      toast.error("Please select an image file");
+      toast.error("يرجى اختيار ملف صورة");
     }
   };
 
@@ -53,13 +53,12 @@ const Upload = () => {
 
   const handleCreateStory = () => {
     if (selectedFile) {
-      // In a real app, you'd upload the file here
       navigate("/story", { state: { image: preview } });
     }
   };
 
   return (
-    <div className="min-h-screen bg-background p-4">
+    <div className="min-h-screen bg-background p-4 font-arabic">
       <div className="container mx-auto max-w-4xl">
         {/* Header */}
         <div className="mb-8 flex items-center gap-4">
@@ -68,12 +67,12 @@ const Upload = () => {
             size="icon"
             onClick={() => navigate("/")}
           >
-            <ArrowLeft className="h-5 w-5" />
+            <ArrowLeft className="h-5 w-5 scale-x-[-1]" />
           </Button>
           <div>
-            <h1 className="text-4xl font-bold text-foreground">Upload Your Drawing</h1>
+            <h1 className="text-4xl font-bold text-foreground font-amiri">ارفع رسمتك</h1>
             <p className="text-lg text-muted-foreground">
-              Share your amazing artwork and let's create a story together!
+              شارك عملك الفني المذهل ودعنا ننشئ قصة معاً!
             </p>
           </div>
         </div>
@@ -94,26 +93,26 @@ const Upload = () => {
               <div className="animate-fade-in-up">
                 <img
                   src={preview}
-                  alt="Preview"
+                  alt="معاينة"
                   className="mx-auto mb-4 max-h-64 rounded-2xl object-contain shadow-soft"
                 />
                 <p className="text-lg font-semibold text-foreground">
-                  Amazing drawing! Ready to create your story?
+                  رسمة رائعة! جاهز لإنشاء قصتك؟
                 </p>
               </div>
             ) : (
               <div className="animate-fade-in-up">
                 <div className="mb-6 flex justify-center">
-                  <div className="rounded-3xl bg-gradient-primary p-6 shadow-primary">
+                  <div className="rounded-3xl bg-gradient-primary p-6 shadow-warm">
                     <UploadIcon className="h-16 w-16 text-white animate-bounce-gentle" />
                   </div>
                 </div>
                 
-                <h3 className="mb-4 text-2xl font-bold text-foreground">
-                  Drop your drawing here!
+                <h3 className="mb-4 text-2xl font-bold text-foreground font-amiri">
+                  اسحب رسمتك هنا!
                 </h3>
                 <p className="mb-6 text-lg text-muted-foreground">
-                  Drag and drop your image, or click to browse
+                  اسحب وأفلت صورتك، أو انقر للتصفح
                 </p>
 
                 <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -122,20 +121,19 @@ const Upload = () => {
                     size="lg"
                     onClick={() => fileInputRef.current?.click()}
                   >
-                    <Image className="mr-2 h-5 w-5" />
-                    Choose Image
+                    <Image className="ml-2 h-5 w-5" />
+                    اختر صورة
                   </Button>
                   
                   <Button
                     variant="fun"
                     size="lg"
                     onClick={() => {
-                      // In a real app, you'd open camera
-                      toast("Camera feature coming soon! 📷");
+                      toast("ميزة الكاميرا قريباً! 📷");
                     }}
                   >
-                    <Camera className="mr-2 h-5 w-5" />
-                    Take Photo
+                    <Camera className="ml-2 h-5 w-5" />
+                    التقط صورة
                   </Button>
                 </div>
               </div>
@@ -159,8 +157,8 @@ const Upload = () => {
               size="xl"
               onClick={handleCreateStory}
             >
-              <Sparkles className="mr-2 h-6 w-6" />
-              Create My Story!
+              <Sparkles className="ml-2 h-6 w-6" />
+              أنشئ قصتي!
             </Button>
             
             <Button
@@ -171,26 +169,26 @@ const Upload = () => {
                 setPreview(null);
               }}
             >
-              Choose Different Image
+              اختر صورة مختلفة
             </Button>
           </div>
         )}
 
         {/* Tips */}
-        <div className="mt-12 rounded-3xl bg-muted/50 p-8">
-          <h3 className="mb-4 text-2xl font-semibold text-foreground">Tips for Best Results:</h3>
+        <div className="mt-12 rounded-3xl bg-muted/50 p-8 bg-pattern-islamic">
+          <h3 className="mb-4 text-2xl font-semibold text-foreground font-amiri">نصائح للحصول على أفضل النتائج:</h3>
           <ul className="space-y-2 text-muted-foreground">
             <li className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-primary"></span>
-              Make sure the drawing is well-lit and clear
+              تأكد من أن الرسمة مضاءة جيداً وواضحة
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-secondary"></span>
+              أضف الكثير من التفاصيل الملونة - فهي تصنع أفضل القصص!
             </li>
             <li className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-accent"></span>
-              Include lots of colorful details - they make the best stories!
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-success"></span>
-              Any drawing style works - from stick figures to masterpieces!
+              أي أسلوب رسم يعمل - من الرسوم البسيطة إلى التحف الفنية!
             </li>
           </ul>
         </div>

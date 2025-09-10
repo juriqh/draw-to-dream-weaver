@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate, useLocation } from "react-router-dom";
 import { 
   ArrowLeft, 
   Volume2, 
-  VolumeX, 
   BookOpen, 
   Mic, 
   ArrowRight,
@@ -13,7 +12,7 @@ import {
   Pause
 } from "lucide-react";
 import { toast } from "sonner";
-import storyAvatar from "@/assets/story-avatar.jpg";
+import saudiStoryAvatar from "@/assets/saudi-story-avatar.jpg";
 
 const Story = () => {
   const navigate = useNavigate();
@@ -24,34 +23,31 @@ const Story = () => {
   const [currentMode, setCurrentMode] = useState<'listen' | 'read'>('listen');
   const [isRecording, setIsRecording] = useState(false);
 
-  // Sample story - in real app this would come from backend
+  // Sample story in Arabic
   const story = {
-    title: "The Magical Adventure",
-    content: `Once upon a time, in a land filled with wonder and magic, there lived a brave little adventurer. Their colorful drawing came to life, and amazing creatures began to dance around them. 
+    title: "المغامرة السحرية",
+    content: `في يوم من الأيام، في أرض مليئة بالعجائب والسحر، كان يعيش مغامر صغير شجاع. رسمته الملونة انبعثت بالحياة، وبدأت مخلوقات مذهلة ترقص من حوله.
 
-    The sun painted golden stripes across the sky, and the flowers sang beautiful melodies. Every stroke of their crayon had created something extraordinary - a world where imagination knew no bounds.
+    رسمت الشمس خطوطاً ذهبية عبر السماء، وغنت الأزهار ألحاناً جميلة. كل ضربة من قلم الرصاص خلقت شيئاً استثنائياً - عالماً لا يعرف فيه الخيال حدوداً.
 
-    As they explored this magical realm, they discovered that their creativity had the power to bring joy to everyone they met. And they all lived happily ever after, knowing that every drawing holds the magic of infinite possibilities.`,
-    audioUrl: null // In real app, this would be generated audio
+    وأثناء استكشافه لهذا العالم السحري، اكتشف أن إبداعه لديه القوة على إدخال الفرح لكل من يلتقي بهم. وعاشوا جميعاً في سعادة وهناء، عالمين أن كل رسمة تحمل سحر الإمكانيات اللانهائية.`,
   };
 
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
     if (!isPlaying) {
-      toast.success("Playing your magical story! 🎵");
-      // In real app, would start audio playback
+      toast.success("تشغيل قصتك السحرية! 🎵");
     } else {
-      toast("Story paused");
+      toast("تم إيقاف القصة");
     }
   };
 
   const handleRecord = () => {
     setIsRecording(!isRecording);
     if (!isRecording) {
-      toast.success("Recording started! Tell us what you think 🎤");
-      // In real app, would start recording
+      toast.success("بدأ التسجيل! أخبرنا برأيك 🎤");
     } else {
-      toast("Recording stopped. Great job!");
+      toast("توقف التسجيل. أحسنت!");
     }
   };
 
@@ -65,7 +61,7 @@ const Story = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-arabic">
       {/* Header */}
       <div className="bg-muted/30 p-4">
         <div className="container mx-auto max-w-6xl flex items-center justify-between">
@@ -75,11 +71,11 @@ const Story = () => {
               size="icon"
               onClick={() => navigate("/upload")}
             >
-              <ArrowLeft className="h-5 w-5" />
+              <ArrowLeft className="h-5 w-5 scale-x-[-1]" />
             </Button>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">Your Story</h1>
-              <p className="text-muted-foreground">Listen, read, and interact!</p>
+              <h1 className="text-2xl font-bold text-foreground font-amiri">قصتك</h1>
+              <p className="text-muted-foreground">استمع، اقرأ، وتفاعل!</p>
             </div>
           </div>
           
@@ -87,7 +83,8 @@ const Story = () => {
             variant="success"
             onClick={handleContinue}
           >
-            Continue <ArrowRight className="ml-2 h-4 w-4" />
+            <ArrowRight className="ml-2 h-4 w-4 scale-x-[-1]" />
+            متابعة
           </Button>
         </div>
       </div>
@@ -99,8 +96,8 @@ const Story = () => {
             <div className="relative mb-6">
               <div className="relative overflow-hidden rounded-3xl bg-gradient-primary p-4 shadow-glow">
                 <img
-                  src={storyAvatar}
-                  alt="Story Avatar"
+                  src={saudiStoryAvatar}
+                  alt="راوي القصص"
                   className="h-80 w-80 object-cover rounded-2xl"
                 />
                 {isPlaying && (
@@ -113,13 +110,13 @@ const Story = () => {
               </div>
               
               {/* Floating animation elements */}
-              <div className="absolute -top-4 -right-4 animate-bounce-gentle">
-                <div className="rounded-full bg-accent p-2 shadow-soft">
+              <div className="absolute -top-4 -left-4 animate-bounce-gentle">
+                <div className="rounded-full bg-secondary p-2 shadow-warm">
                   <Sparkles className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <div className="absolute -bottom-4 -left-4 animate-float">
-                <div className="rounded-full bg-success p-2 shadow-soft">
+              <div className="absolute -bottom-4 -right-4 animate-float">
+                <div className="rounded-full bg-accent p-2 shadow-warm">
                   <BookOpen className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -135,13 +132,13 @@ const Story = () => {
               >
                 {isPlaying ? (
                   <>
-                    <Pause className="mr-2 h-5 w-5" />
-                    Pause
+                    <Pause className="ml-2 h-5 w-5" />
+                    إيقاف
                   </>
                 ) : (
                   <>
-                    <Play className="mr-2 h-5 w-5" />
-                    Play Story
+                    <Play className="ml-2 h-5 w-5" />
+                    تشغيل القصة
                   </>
                 )}
               </Button>
@@ -151,11 +148,11 @@ const Story = () => {
                 size="lg"
                 onClick={() => {
                   setCurrentMode('listen');
-                  toast("Listening mode activated! 👂");
+                  toast("تم تفعيل وضع الاستماع! 👂");
                 }}
               >
-                <Volume2 className="mr-2 h-5 w-5" />
-                Listen
+                <Volume2 className="ml-2 h-5 w-5" />
+                استمع
               </Button>
 
               <Button
@@ -163,11 +160,11 @@ const Story = () => {
                 size="lg"
                 onClick={() => {
                   setCurrentMode('read');
-                  toast("Reading mode activated! 📖");
+                  toast("تم تفعيل وضع القراءة! 📖");
                 }}
               >
-                <BookOpen className="mr-2 h-5 w-5" />
-                Read
+                <BookOpen className="ml-2 h-5 w-5" />
+                اقرأ
               </Button>
 
               <Button
@@ -175,34 +172,34 @@ const Story = () => {
                 size="lg"
                 onClick={handleRecord}
               >
-                <Mic className={`mr-2 h-5 w-5 ${isRecording ? 'animate-pulse' : ''}`} />
-                {isRecording ? 'Stop' : 'Record'}
+                <Mic className={`ml-2 h-5 w-5 ${isRecording ? 'animate-pulse' : ''}`} />
+                {isRecording ? 'توقف' : 'سجل'}
               </Button>
             </div>
           </div>
 
           {/* Story Content */}
           <div className="flex flex-col">
-            <div className="mb-6 rounded-3xl bg-card p-8 shadow-soft">
-              <h2 className="mb-6 text-3xl font-bold text-center text-foreground animate-fade-in-up">
+            <div className="mb-6 rounded-3xl bg-card p-8 shadow-warm">
+              <h2 className="mb-6 text-3xl font-bold text-center text-foreground animate-fade-in-up font-amiri">
                 {story.title}
               </h2>
               
               <div className={`transition-all duration-500 ${
-                currentMode === 'read' ? 'text-lg leading-relaxed' : 'text-base'
+                currentMode === 'read' ? 'text-lg leading-relaxed' : 'text-base leading-relaxed'
               }`}>
                 {currentMode === 'listen' && (
                   <div className="mb-4 text-center">
                     <div className="inline-flex items-center gap-2 rounded-full bg-muted px-4 py-2">
                       <Volume2 className="h-4 w-4 text-primary" />
                       <span className="text-sm text-muted-foreground">
-                        {isPlaying ? 'Playing story...' : 'Ready to play'}
+                        {isPlaying ? 'تشغيل القصة...' : 'جاهز للتشغيل'}
                       </span>
                     </div>
                   </div>
                 )}
                 
-                <div className="space-y-4 text-foreground">
+                <div className="space-y-4 text-foreground text-right">
                   {story.content.split('\n\n').map((paragraph, index) => (
                     <p 
                       key={index} 
@@ -223,12 +220,12 @@ const Story = () => {
             {/* Uploaded Image Preview */}
             {uploadedImage && (
               <div className="rounded-3xl bg-muted/30 p-6">
-                <h3 className="mb-4 text-xl font-semibold text-foreground">
-                  Your Amazing Drawing
+                <h3 className="mb-4 text-xl font-semibold text-foreground font-amiri">
+                  رسمتك المذهلة
                 </h3>
                 <img
                   src={uploadedImage}
-                  alt="Your drawing"
+                  alt="رسمتك"
                   className="w-full max-w-sm mx-auto rounded-2xl shadow-soft"
                 />
               </div>

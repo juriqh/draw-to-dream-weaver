@@ -20,48 +20,47 @@ const DrawingImprovement = () => {
   
   const [showTips, setShowTips] = useState(true);
 
-  // In a real app, this would be an AI-generated improved version
+  // Placeholder for improved image
   const improvedImagePlaceholder = "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=400&h=400&fit=crop";
 
   const improvementTips = [
     {
       icon: <Palette className="h-6 w-6" />,
-      title: "Add More Colors",
-      description: "Try using bright blues for the sky and greens for grass. Rainbow colors make everything more magical!",
+      title: "أضف المزيد من الألوان",
+      description: "جرب استخدام الأزرق الزاهي للسماء والأخضر للعشب. الألوان الزاهية تجعل كل شيء أكثر سحراً!",
       color: "bg-gradient-primary"
     },
     {
       icon: <Sparkles className="h-6 w-6" />,
-      title: "Add Details",
-      description: "Draw some clouds in the sky, flowers in the grass, or stars twinkling above. Small details bring drawings to life!",
-      color: "bg-gradient-accent"
+      title: "أضف التفاصيل",
+      description: "ارسم بعض الغيوم في السماء، أو الأزهار في العشب، أو النجوم المتلألئة في الأعلى. التفاصيل الصغيرة تحيي الرسوم!",
+      color: "bg-gradient-secondary"
     },
     {
       icon: <Star className="h-6 w-6" />,
-      title: "Create a Background",
-      description: "Your character is amazing! Adding a background like a castle, forest, or playground would make it even more exciting.",
-      color: "bg-gradient-success"
+      title: "اصنع خلفية جميلة",
+      description: "شخصيتك رائعة! إضافة خلفية مثل قصر، أو واحة، أو مسجد جميل ستجعلها أكثر إثارة.",
+      color: "bg-gradient-accent"
     },
     {
       icon: <Heart className="h-6 w-6" />,
-      title: "Add Friends",
-      description: "Every hero needs friends! Try drawing other characters, animals, or magical creatures to join the adventure.",
-      color: "bg-gradient-secondary"
+      title: "أضف أصدقاء",
+      description: "كل بطل يحتاج أصدقاء! جرب رسم شخصيات أخرى، أو حيوانات، أو مخلوقات سحرية للانضمام للمغامرة.",
+      color: "bg-gradient-success"
     }
   ];
 
   const handleDownload = () => {
-    toast.success("Downloading your improved drawing! 📥");
-    // In a real app, would trigger download
+    toast.success("تحميل رسمتك المحسنة! 📥");
   };
 
   const handleFinish = () => {
     navigate("/gallery");
-    toast.success("Great job! Your story has been added to the gallery! 🎉");
+    toast.success("أحسنت! تم إضافة قصتك للمعرض! 🎉");
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-arabic">
       {/* Header */}
       <div className="bg-muted/30 p-4">
         <div className="container mx-auto max-w-6xl flex items-center justify-between">
@@ -71,11 +70,11 @@ const DrawingImprovement = () => {
               size="icon"
               onClick={() => navigate("/story")}
             >
-              <ArrowLeft className="h-5 w-5" />
+              <ArrowLeft className="h-5 w-5 scale-x-[-1]" />
             </Button>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">Improve Your Drawing</h1>
-              <p className="text-muted-foreground">See how we can make it even more amazing!</p>
+              <h1 className="text-2xl font-bold text-foreground font-amiri">حسن رسمتك</h1>
+              <p className="text-muted-foreground">شاهد كيف يمكننا جعلها أكثر روعة!</p>
             </div>
           </div>
           
@@ -83,7 +82,8 @@ const DrawingImprovement = () => {
             variant="success"
             onClick={handleFinish}
           >
-            Finish <ArrowRight className="ml-2 h-4 w-4" />
+            <ArrowRight className="ml-2 h-4 w-4 scale-x-[-1]" />
+            إنهاء
           </Button>
         </div>
       </div>
@@ -93,22 +93,22 @@ const DrawingImprovement = () => {
         <div className="mb-12 grid gap-8 lg:grid-cols-2">
           {/* Original Drawing */}
           <div className="text-center">
-            <div className="mb-4 rounded-3xl bg-card p-6 shadow-soft">
-              <h3 className="mb-4 text-2xl font-bold text-foreground">Your Original Drawing</h3>
+            <div className="mb-4 rounded-3xl bg-card p-6 shadow-warm">
+              <h3 className="mb-4 text-2xl font-bold text-foreground font-amiri">رسمتك الأصلية</h3>
               {originalImage ? (
                 <img
                   src={originalImage}
-                  alt="Original drawing"
+                  alt="الرسمة الأصلية"
                   className="mx-auto max-h-80 rounded-2xl object-contain shadow-soft"
                 />
               ) : (
                 <div className="flex h-80 items-center justify-center rounded-2xl bg-muted">
-                  <p className="text-muted-foreground">No image available</p>
+                  <p className="text-muted-foreground">لا توجد صورة متاحة</p>
                 </div>
               )}
               <div className="mt-4 flex justify-center">
                 <div className="rounded-full bg-gradient-primary px-6 py-2">
-                  <span className="text-sm font-semibold text-white">Amazing Start! ⭐</span>
+                  <span className="text-sm font-semibold text-white">بداية رائعة! ⭐</span>
                 </div>
               </div>
             </div>
@@ -116,23 +116,23 @@ const DrawingImprovement = () => {
 
           {/* AI Improved Version */}
           <div className="text-center">
-            <div className="mb-4 rounded-3xl bg-card p-6 shadow-soft relative overflow-hidden">
-              <div className="absolute top-4 right-4 animate-pulse-glow">
-                <div className="rounded-full bg-gradient-accent p-2">
+            <div className="mb-4 rounded-3xl bg-card p-6 shadow-warm relative overflow-hidden">
+              <div className="absolute top-4 left-4 animate-pulse-glow">
+                <div className="rounded-full bg-gradient-secondary p-2">
                   <Sparkles className="h-4 w-4 text-white" />
                 </div>
               </div>
               
-              <h3 className="mb-4 text-2xl font-bold text-foreground">AI Enhanced Version</h3>
+              <h3 className="mb-4 text-2xl font-bold text-foreground font-amiri">النسخة المحسنة بالذكاء الاصطناعي</h3>
               <img
                 src={improvedImagePlaceholder}
-                alt="AI improved drawing"
+                alt="الرسمة المحسنة"
                 className="mx-auto max-h-80 rounded-2xl object-contain shadow-glow"
               />
               <div className="mt-4 flex justify-center gap-2">
                 <Button variant="fun" size="sm" onClick={handleDownload}>
-                  <Download className="mr-2 h-4 w-4" />
-                  Download
+                  <Download className="ml-2 h-4 w-4" />
+                  تحميل
                 </Button>
               </div>
             </div>
@@ -142,9 +142,9 @@ const DrawingImprovement = () => {
         {/* Improvement Tips */}
         <div className="mb-8">
           <div className="mb-6 text-center">
-            <h2 className="mb-2 text-3xl font-bold text-foreground">Tips to Make It Even Better!</h2>
+            <h2 className="mb-2 text-3xl font-bold text-foreground font-amiri">نصائح لجعلها أفضل!</h2>
             <p className="text-lg text-muted-foreground">
-              Here are some fun ideas to improve your next drawing
+              إليك بعض الأفكار الممتعة لتحسين رسمتك القادمة
             </p>
           </div>
 
@@ -152,7 +152,7 @@ const DrawingImprovement = () => {
             {improvementTips.map((tip, index) => (
               <div
                 key={index}
-                className="group animate-fade-in-up rounded-3xl bg-card p-6 shadow-soft hover:shadow-primary transition-all duration-300"
+                className="group animate-fade-in-up rounded-3xl bg-card p-6 shadow-warm hover:shadow-primary transition-all duration-300"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="mb-4 flex items-center gap-4">
@@ -161,23 +161,23 @@ const DrawingImprovement = () => {
                   </div>
                   <h3 className="text-xl font-semibold text-foreground">{tip.title}</h3>
                 </div>
-                <p className="text-muted-foreground leading-relaxed">{tip.description}</p>
+                <p className="text-muted-foreground leading-relaxed text-right">{tip.description}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Encouragement Section */}
-        <div className="rounded-3xl bg-gradient-rainbow p-8 text-center text-white shadow-glow">
+        <div className="rounded-3xl bg-gradient-saudi p-8 text-center text-white shadow-glow">
           <div className="mb-4 flex justify-center">
             <div className="animate-bounce-gentle">
               <Star className="h-16 w-16" />
             </div>
           </div>
-          <h3 className="mb-4 text-3xl font-bold">You're an Amazing Artist! 🎨</h3>
-          <p className="mb-6 text-lg opacity-90">
-            Every drawing you create is special and unique. Keep practicing, keep dreaming, 
-            and keep creating wonderful stories with your art!
+          <h3 className="mb-4 text-3xl font-bold font-amiri">أنت فنان مبدع! 🎨</h3>
+          <p className="mb-6 text-lg opacity-90 leading-relaxed">
+            كل رسمة تبدعها مميزة وفريدة. استمر في الممارسة، واستمر في الحلم، 
+            واستمر في إنشاء قصص رائعة بفنك!
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button
@@ -186,7 +186,7 @@ const DrawingImprovement = () => {
               onClick={() => navigate("/upload")}
               className="bg-white/10 border-white/30 text-white hover:bg-white/20"
             >
-              Create Another Story
+              أنشئ قصة أخرى
             </Button>
             <Button
               variant="outline"
@@ -194,8 +194,8 @@ const DrawingImprovement = () => {
               onClick={handleFinish}
               className="bg-white/10 border-white/30 text-white hover:bg-white/20"
             >
-              <Heart className="mr-2 h-5 w-5" />
-              Save to Gallery
+              <Heart className="ml-2 h-5 w-5" />
+              احفظ في المعرض
             </Button>
           </div>
         </div>

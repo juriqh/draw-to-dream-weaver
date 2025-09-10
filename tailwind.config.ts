@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        'arabic': ['Noto Sans Arabic', 'Arial', 'sans-serif'],
+        'amiri': ['Amiri', 'serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -77,12 +81,15 @@ export default {
         'gradient-secondary': 'var(--gradient-secondary)',
         'gradient-accent': 'var(--gradient-accent)',
         'gradient-success': 'var(--gradient-success)',
-        'gradient-rainbow': 'var(--gradient-rainbow)',
+        'gradient-saudi': 'var(--gradient-saudi)',
+        'gradient-desert': 'var(--gradient-desert)',
+        'pattern-islamic': 'var(--pattern-islamic)',
       },
       boxShadow: {
         'primary': 'var(--shadow-primary)',
         'soft': 'var(--shadow-soft)',
         'glow': 'var(--shadow-glow)',
+        'warm': 'var(--shadow-warm)',
       },
       keyframes: {
         // Existing accordion animations
